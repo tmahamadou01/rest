@@ -1,0 +1,18 @@
+<div class="ui modal" id="modal-detail">
+    <i class="close icon"></i>
+    <div class="header">
+        Détail de la ressource
+    </div>
+    <div class="content">
+        Titre : <h1>{{ ressource.name }}</h1>
+        <hr>
+        Lien : <h3><a target="_blank" href="https://{{ ressource.link }}">{{ ressource.link }}</a></h3>
+        <hr>
+        Description : <h3>{{ ressource.description }}</h3>
+    </div>
+    <div class="actions">
+        <div class="ui black deny button">
+            Retour
+        </div>
+    </div>
+</div>

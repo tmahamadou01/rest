@@ -1,0 +1,54 @@
+<div class="ui small modal" id="modal-succes">
+    <div class="ui massive success message">
+        <i class="close icon"></i>
+        <div class="header">
+            Votre ressource à été ajouté avec succès.
+        </div>
+    </div>
+</div>
+
+<div class="ui modal" id="modal-add">
+    <i class="close icon"></i>
+    <div class="header">
+        Ajouter une ressource
+    </div>
+    <div class="content">
+        <form action="{{ path_for('submit') }}" id="form-ressource" method="POST">
+            <div class="ui large form">
+                <div class="" id="message"></div>
+                <div class="field">
+                    <label>Nom</label>
+                    <input placeholder="Entrez le nom de la ressource" type="text" id="name">
+                </div>
+                <div class="field">
+                    <label>Lien</label>
+                    <div class="ui labeled input">
+                        <div class="ui label">
+                            http://
+                        </div>
+                        <input type="text" placeholder="Entrez le lien de la ressource" id="link">
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Description</label>
+                    <textarea rows="3" id="description"></textarea>
+                </div>
+                <div class="field">
+                    <select id="category">
+                        {% for categorie in categories %}
+                            <option value="{{ categorie.id }}">{{ categorie.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="actions">
+        <div class="ui black deny button">
+            Retour
+        </div>
+        <div class="ui positive right button" id="submit-form">
+            Ajouter
+        </div>
+    </div>
+</div>

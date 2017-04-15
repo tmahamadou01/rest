@@ -1,0 +1,93 @@
+{% extends "layout.twig" %}
+{% block content %}
+
+    <br>
+    <div class="ui grid">
+
+        <div class="seven wide column" style="font-size: 18px;">
+            <div class="two fields">
+                <div class="field" style="padding-left: 10px;">
+                  <select class="ui fluid dropdown" style="font-size: 18px;" onchange="location = this.options[this.selectedIndex].value;">
+                      <option value="">Choisir Une Categorie</option>
+                      {% for categorie in categories %}
+                          <option value="http://localhost/rest-of-web/public/index.php/rest-of-web/category/{{ categorie.name }}/{{ categorie.id }}">{{ categorie.name }}</option>
+                          <option><a href="{{ path_for('ressources', { 'name': categorie.name, 'id': categorie.id }) }}">{{ categorie.name }}</a></option>
+                          {# <a href="rest-of-web/category/{{ categorie.name }}/{{ categorie.id }}">{{ categorie.name|e }}</a> #}
+                      {% endfor %}
+                  </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $("select").click(function() {
+            var open = $(this).data("isopen");
+            if(open) {
+                window.location.href = $(this).val()
+            }
+            //set isopen to opposite so next time when use clicked select box
+            //it wont trigger this event
+            $(this).data("isopen", !open);
+        });
+
+    </script>
+
+    <style>
+        .cat{
+            cursor: pointer !important;
+        }
+    </style>
+
+{% for ressource in ressources %}
+
+    <div class="cat">
+        <a id="link_list{{ ressource.id }}">{{ ressource.name }} #{{ ressource.id }}</a><br>
+        <a href="{{ path_for('ressources', { 'name': categorie.name, 'id': categorie.id }) }}">{{ categorie.name }}</a>
+    </div>
+
+    <!-- detail modal -->
+
+    <div class="ui modal" id="modal-detail{{ ressource.id }}">
+        <i class="close icon"></i>
+        <div class="header">
+            Détail de la ressource
+        </div>
+        <div class="content">
+            Titre : <h1>{{ ressource.name }}</h1>
+            <hr>
+            Lien : <h3><a target="_blank" href="https://{{ ressource.link }}">{{ ressource.link }}</a></h3>
+            <hr>
+            Description : <h3>{{ ressource.description }}</h3>
+        </div>
+        <div class="actions">
+            <div class="ui black deny button">
+                Retour
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $("#link_list{{ ressource.id }}").click(function(){
+            $('#modal-detail{{ ressource.id }}').modal('show');
+        });
+    </script>
+
+    <!-- end detail modal -->
+    {# {% include 'partial/modal_detail.twig' %} #}
+{% endfor %}
+
+    {% include 'partial/modal.twig' %}
+{% endblock %}
+
+{% block men_footer %}
+    <div class="ui menu">
+        <a class="item" href="{{ path_for('ressources') }}">
+            Rest of web
+        </a>
+        <div class="right menu">
+            <a class="item" id="modal">Ajouter</a>
+            <a class="item hasard" id="btn-hasard">Voir au hasard</a>
+        </div>
+    </div>
+{% endblock %}

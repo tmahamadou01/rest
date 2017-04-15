@@ -1,0 +1,36 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+    <div class="center aligned">
+        <h1 class="center aligned">Prevor un texte de presentation</h1>
+    </div>
+    <div class="tableau">
+        {% for categorie in categories %}
+            <div class="cat">
+                <a href="rest-of-web/category/{{ categorie.name }}/{{ categorie.id }}">{{ categorie.name|e }}</a>
+            </div>
+        {% endfor %}
+    </div>
+
+    {#<div class="ui segment" style="height: inherit;">#}
+        {#<div class="ui dimmer dimmer-hasard" id="dimmer-hasard">#}
+            {#<div class="ui massive text loader">Chargement, veuillez patientez ...</div>#}
+        {#</div>#}
+        {#<p></p>#}
+        {#<p></p>#}
+        {#<p></p>#}
+    {#</div>#}
+
+    {% include 'partial/modal.twig' %}
+{% endblock %}
+{% block men_footer %}
+    <div class="ui menu">
+        <a class="item" href="{{ path_for('ressources') }}">
+            Rest of web
+        </a>
+        <div class="right menu">
+            <a class="item" id="modal">Ajouter</a>
+            <a class="item hasard" id="btn-hasard">Voir au hasard</a>
+        </div>
+    </div>
+{% endblock %}

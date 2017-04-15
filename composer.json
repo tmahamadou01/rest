@@ -1,0 +1,19 @@
+{
+    "name": "root/rest-of-web",
+    "description": "share ressources",
+    "authors": [
+        {
+            "name": "tmahamadou01",
+            "email": "mahamadoutraore1@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "require": {
+        "slim/slim": "^3.5",
+        "slim/twig-view": "^2.1"
+    }
+}

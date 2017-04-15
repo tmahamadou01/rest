@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css">
+        <link rel="stylesheet" href="{{ base_url() }}/css/style.css">
+
+        <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+
+        <meta charset="UTF-8">
+    </head>
+    <body>
+
+        {% block content %}
+
+        {% endblock %}
+        {% block men_footer %}
+        {% endblock %}
+
+
+        <script src="{{ base_url() }}/assets/semantic/semantic.js"></script>
+        <script src="{{ base_url() }}/js/app.js"></script>
+        {% block js %}
+        {% endblock %}
+
+    </body>
+</html>
